@@ -1,0 +1,33 @@
+
+/* Class = "UITextField"; placeholder = "Alihan"; ObjectID = "0uC-1s-rjH"; */
+"0uC-1s-rjH.placeholder" = "Alihan";
+
+/* Class = "UILabel"; text = "Dil: "; ObjectID = "1hR-2o-2Xn"; */
+"1hR-2o-2Xn.text" = "Sprache: ";
+
+/* Class = "UITextField"; placeholder = "Türkçe"; ObjectID = "H2o-bA-8Gt"; */
+"H2o-bA-8Gt.placeholder" = "Türkçe";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "X8f-Ls-SCs"; */
+"X8f-Ls-SCs.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Popular Movies"; ObjectID = "bOb-sx-QUX"; */
+"bOb-sx-QUX.title" = "Popular Movies";
+
+/* Class = "UITextField"; placeholder = "Aktay"; ObjectID = "cwT-38-466"; */
+"cwT-38-466.placeholder" = "Aktay";
+
+/* Class = "UILabel"; text = "İsim: "; ObjectID = "d4S-7H-0iI"; */
+"d4S-7H-0iI.text" = "Name: ";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "et8-qC-EhW"; */
+"et8-qC-EhW.title" = "Profile";
+
+/* Class = "UITabBarItem"; title = "The Movie Database"; ObjectID = "gnQ-TK-Z17"; */
+"gnQ-TK-Z17.title" = "The Movie Database";
+
+/* Class = "UILabel"; text = "Konum izni: "; ObjectID = "nAB-Iq-hne"; */
+"nAB-Iq-hne.text" = "Standort Erlaubnis: ";
+
+/* Class = "UILabel"; text = "Soy isim:"; ObjectID = "zPM-j7-4Jm"; */
+"zPM-j7-4Jm.text" = "Nachname:";

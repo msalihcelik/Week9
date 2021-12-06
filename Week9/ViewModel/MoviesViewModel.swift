@@ -18,6 +18,6 @@ struct MoviesViewModel {
     }
     
     func getMovieImagePath(indexPath: Int) -> String {
-        return self.movies[indexPath].poster_path ?? ""
+        return self.movies[indexPath].backdrop_path ?? ""
     }
 }
