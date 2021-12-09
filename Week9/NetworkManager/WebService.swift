@@ -11,7 +11,7 @@ class WebService {
     
     typealias CompletionHandler = (_ success: [Result] ) -> Void
        
-    static func getMoviePhotos(completionHandler: @escaping CompletionHandler) {
+    static func getMoviePhotos(viewController: UIViewController,completionHandler: @escaping CompletionHandler) {
            let searchURL = "https://api.themoviedb.org/3/movie/popular?api_key=\(Constants.apiKey)&language=en-US&page=1"
            AF.request(searchURL, method: .post).response { response in
                switch (response.result) {
@@ -27,6 +27,9 @@ class WebService {
                    }
                case .failure(let error):
                    print(error)
+                   let alert = UIAlertController(title: "Error", message: nil, preferredStyle: .alert)
+                   alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
+                   viewController.present(alert, animated: true, completion: nil)
                }
            }
        }

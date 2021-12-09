@@ -25,6 +25,7 @@
 		67E01EEA275A21BD00AD37A9 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E01EE9275A21BD00AD37A9 /* WebService.swift */; };
 		67E01EED275A2A9F00AD37A9 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E01EEC275A2A9F00AD37A9 /* UIImageView+Extensions.swift */; };
 		67F86F8F275BB279003C233E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67F86F91275BB279003C233E /* Localizable.strings */; };
+		67FA5C84276288E200FA1449 /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FA5C83276288E200FA1449 /* CellIdentifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		67F86F90275BB279003C233E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		67F86F92275BB2A8003C233E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		67F86F93275BB2AA003C233E /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		67FA5C83276288E200FA1449 /* CellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifier.swift; sourceTree = "<group>"; };
 		BD28B275ADA2AA566A2F0AAC /* Pods-Week9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Week9.debug.xcconfig"; path = "Target Support Files/Pods-Week9/Pods-Week9.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				67918BEE275840610078F67E /* Constants.swift */,
+				67FA5C83276288E200FA1449 /* CellIdentifier.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			files = (
 				67E01EEA275A21BD00AD37A9 /* WebService.swift in Sources */,
 				67A97086275DA0C300BB2B57 /* String+Extensions.swift in Sources */,
+				67FA5C84276288E200FA1449 /* CellIdentifier.swift in Sources */,
 				67918BEC27583EB10078F67E /* Result.swift in Sources */,
 				67E01EE627597DD800AD37A9 /* WebViewController.swift in Sources */,
 				67E01EE8275983A600AD37A9 /* ProfileViewController.swift in Sources */,

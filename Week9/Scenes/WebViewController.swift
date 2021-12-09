@@ -12,6 +12,14 @@ final class WebViewController: UIViewController, WKUIDelegate {
     
     var webView: WKWebView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let myURL = URL(string:"https://www.themoviedb.org")
+        let myRequest = URLRequest(url: myURL!)
+        webView.load(myRequest)
+        webView.navigationDelegate = self
+    }
+    
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -21,14 +29,6 @@ final class WebViewController: UIViewController, WKUIDelegate {
         refreshControl.addTarget(self, action: #selector(WebViewController.refreshWebView), for: UIControl.Event.valueChanged)
         webView.scrollView.addSubview(refreshControl)
         view = webView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let myURL = URL(string:"https://www.themoviedb.org")
-        let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
-        webView.navigationDelegate = self
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {

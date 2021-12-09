@@ -21,17 +21,35 @@ final class MovieViewController: UIViewController {
     private func configureContents() {
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
-//        storyboard -> size inspector -> estimate size = none ||
-//        movieCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
     private func setupMovie() {
-        WebService.getMoviePhotos { [weak self] success in
+        WebService.getMoviePhotos(viewController: self) { [weak self] success in
             guard let self = self else { return }
             self.movieList.movies = success
             self.movieCollectionView.reloadData()
         }
     }
+}
+
+//MARK: - UICollectionViewDataSource Methods
+extension MovieViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movieList.getMovieCount
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.movieCell, for: indexPath) as! MovieCollectionViewCell
+        //        https://image.tmdb.org/t/p/w500{backdrop_path}
+        let url = "https://image.tmdb.org/t/p/w500"
+        let backdrop_path = movieList.getMovieImagePath(indexPath: indexPath.row)
+        let movieTitle = movieList.getMovieTitle(indexPath: indexPath.row)
+        cell.titleLabel.text = movieTitle
+        cell.imageView.configureKF(url: "\(url)\(backdrop_path)")
+        return cell
+    }
+    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -54,24 +72,4 @@ extension MovieViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = ( collectionView.frame.width - (3 * 5 ) ) / 2
         return .init(width: cellWidth, height: (cellWidth / 2 ) + 50 )
     }
-}
-
-//MARK: - UICollectionViewDataSource Methods
-extension MovieViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieList.getMovieCount
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
-        //        https://image.tmdb.org/t/p/w500{backdrop_path}
-        let url = "https://image.tmdb.org/t/p/w500"
-        let backdrop_path = movieList.getMovieImagePath(indexPath: indexPath.row)
-        let movieTitle = movieList.getMovieTitle(indexPath: indexPath.row)
-        cell.titleLabel.text = movieTitle
-        cell.imageView.configureKF(url: "\(url)\(backdrop_path)")
-        return cell
-    }
-    
 }

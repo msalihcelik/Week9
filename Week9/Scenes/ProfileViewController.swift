@@ -11,17 +11,17 @@ import CoreLocation
 final class ProfileViewController: UIViewController {
     
     @IBOutlet weak var languageTextField: UITextField!
-    var pickerView = UIPickerView()
-    let languages = ["Türkçe", "English", "Deutsch"]
-    let languageAlias = ["tr", "en", "de"]
+    private var pickerView = UIPickerView()
+    private let languages = ["Türkçe", "English", "Deutsch"]
+    private let languageAlias = ["tr", "en", "de"]
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var locationSwitch: UISwitch!
     @IBOutlet weak var profileImageView: UIImageView!
-    var check = false
-    var locationManager: CLLocationManager?
+    private var check = false
+    private var locationManager: CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +30,12 @@ final class ProfileViewController: UIViewController {
     
     @objc func changeImage() {
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            self.openCamera()
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
+            self?.openCamera()
         }))
         
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-            self.openGallery()
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { [weak self] _ in
+            self?.openGallery()
         }))
         
         alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
@@ -104,10 +104,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func openCamera()
-    {
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-        {
+    private func openCamera() {
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerController.SourceType.camera

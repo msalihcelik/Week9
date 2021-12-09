@@ -5,19 +5,36 @@
 //  Created by Mehmet Salih ÇELİK on 2.12.2021.
 //
 
+import Foundation
+import SwiftUI
+
 struct Result: Decodable {
+    
     let adult: Bool
-    let backdrop_path: String?
-    let genre_ids: [Int]
+    let backdropPath: String?
+    let genreIds: [Int]
     let id: Int
-    let original_language: String?
-    let original_title: String?
+    let originalLanguage: String?
+    let originalTitle: String?
     let overview: String?
     let popularity: Double
-    let poster_path: String?
-    let release_date: String?
+    let posterPath: String?
+    let releaseDate: String?
     let title: String?
     let video: Bool
-    let vote_average: Double
-    let vote_count: Int
+    let voteAverage: Double
+    let voteCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case
+            adult,id,overview,popularity,title,video,
+            backdropPath = "backdrop_path",
+            genreIds = "genre_ids",
+            originalLanguage = "original_language",
+            originalTitle = "original_title",
+            posterPath = "poster_path",
+            releaseDate = "release_date",
+            voteAverage = "vote_average",
+            voteCount = "vote_count"
+    }
 }

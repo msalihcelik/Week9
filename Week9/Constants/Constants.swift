@@ -7,5 +7,4 @@
 
 struct Constants {
     static let apiKey = "c9f82a47b46615291372400ab8032ff2"
-    static let movieCell = "movieCell"
 }
