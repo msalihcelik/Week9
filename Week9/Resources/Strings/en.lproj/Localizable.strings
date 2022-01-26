@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Week9
+
+  Created by Mehmet Salih ÇELİK on 4.12.2021.
+  
+*/
+
+"Name" = "Name:";
+"Last name" = "Last name:";
+"Language" = "Language:";
+"Location permission" = "Location permission:";
