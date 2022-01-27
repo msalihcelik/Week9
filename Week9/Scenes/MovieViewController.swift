@@ -41,7 +41,6 @@ extension MovieViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.movieCell, for: indexPath) as! MovieCollectionViewCell
-        //        https://image.tmdb.org/t/p/w500{backdrop_path}
         let url = "https://image.tmdb.org/t/p/w500"
         let backdrop_path = movieList.getMovieImagePath(indexPath: indexPath.row)
         let movieTitle = movieList.getMovieTitle(indexPath: indexPath.row)
@@ -49,7 +48,6 @@ extension MovieViewController: UICollectionViewDataSource {
         cell.imageView.configureKF(url: "\(url)\(backdrop_path)")
         return cell
     }
-    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout

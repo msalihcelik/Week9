@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import Darwin
 
 final class ProfileViewController: UIViewController {
     
@@ -66,6 +67,25 @@ final class ProfileViewController: UIViewController {
             }
         }
     }
+    
+    private func restartApplication(){
+        var localUserInfo: [AnyHashable : Any] = [:]
+        localUserInfo["pushType"] = "restart"
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Configuration Update Complete"
+        content.body = "Tap to reopen the application"
+        content.sound = UNNotificationSound.default
+        content.userInfo = localUserInfo
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
+
+        let identifier = "com.domain.restart"
+        let request = UNNotificationRequest.init(identifier: identifier, content: content, trigger: trigger)
+        let center = UNUserNotificationCenter.current()
+        
+        center.add(request)
+        exit(0)
+    }
 }
 
 // MARK: - UIPickerViewDelegate
@@ -89,10 +109,16 @@ extension ProfileViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         languageTextField.text = languages[row]
         languageTextField.resignFirstResponder()
-        nameLabel.text = "Name".localized(languageAlias[row])
-        lastNameLabel.text = "Last name".localized(languageAlias[row])
-        languageLabel.text = "Language".localized(languageAlias[row])
-        locationLabel.text = "Location permission".localized(languageAlias[row])
+        UserDefaults.standard.set([languageAlias[row]], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+        let alertController = UIAlertController(title: "Language", message: "To change language you need to restart the application. Do you want to restart?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            self.restartApplication()
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -118,8 +144,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
         }
     }
     
-    private func openGallery()
-    {
+    private func openGallery() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
