@@ -144,8 +144,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
         }
     }
     
-    private func openGallery()
-    {
+    private func openGallery() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
